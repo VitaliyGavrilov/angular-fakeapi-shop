@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';//Декоратор @Componen
 import { IProduct } from './models/product';
 import { products as data } from './data/proructs';
 import { ProductService } from './services/products.service';
+import { Observable, tap } from 'rxjs';
 //используем декоратор
 @Component({
   selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
@@ -24,8 +25,8 @@ export class AppComponent implements OnInit {
 
   // в рамках этого класса обьявляем с чем можем работать и используем это в шаблоне
   title = 'angular-fakeapi-shop';//мы обьявили это поле в классе, и теперь можем использовать в шаблоне
-  products: IProduct[] = []//создали поле, обозначили тип данных, присвоили значение, сначала пустой массив, но делая запрос на сервер присвоим новое значение
   loading = false //реализуем индикатор загруззки, для этого создаем поле-состояние, в таких случаях не обязательно указывать тип
+  products$: Observable<IProduct[]>//$-обозначает что это стрим
 
   //создаем конструктор, в приватное поле prouctsService положим класс-сервис ProductService
   constructor(private prouctsService: ProductService) {
@@ -36,12 +37,7 @@ export class AppComponent implements OnInit {
   //имплементироваться от интерфейса OnInit для реализации метода ngOnInit необзательно, но считается хорошей практикой
   ngOnInit(): void {
     this.loading = true // при запросе индикатор загрузки будет тру
-    //через конструктор нам доступны методы класса ProductService
-    // метод getAll возвращает стрим, для получения данных надо подписаться на стрим методом subscribe
-    // полученные данные обозначаем как products и используем их
-    this.prouctsService.getAll().subscribe( products => {
-      this.products = products// присваиваем полю products значение полученных данных
-      this.loading = false //после получения данных убираем индикатор загрузки
-    })
+    this.products$ = this.prouctsService.getAll().pipe(tap(()=> this.loading=false))
+    //tap никак не меняет данные, только добавляет функционал, с его помощью будем менять значение переменной индикатора загрузки
   }
 }
