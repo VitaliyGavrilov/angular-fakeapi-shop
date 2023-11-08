@@ -7,10 +7,12 @@ import { BrowserModule } from '@angular/platform-browser';// служебный 
 import { AppRoutingModule } from './app-routing.module';// командой ng generate module app-routing --flat --module=app добавил роутинг
 //компоненты
 import { AppComponent } from './app.component';//основнйо компонент приложения
+import { ProductComponent } from './components/product/product.component';
 //декоратор настраивает приложение, навешивает функционал
 @NgModule({
   declarations: [ //компоненты
-    AppComponent
+    AppComponent,
+    ProductComponent
   ],
   imports: [ //дополнительные модули
     BrowserModule,

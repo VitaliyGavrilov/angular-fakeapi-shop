@@ -10,12 +10,13 @@
 
 //Импорты
 import { Component } from '@angular/core';//Декоратор @Component позволяет идентифицировать класс как компонент.
-
+//используем декоратор
 @Component({
   selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
   templateUrl: './app.component.html', // шаблон
   styleUrls: ['./app.component.css']// стили
 })
+//создание и экспорт класса
 export class AppComponent {
   title = 'angular-fakeapi-shop';//мы обьявили это поле в классе, и теперь можем использовать в шаблоне
 }
