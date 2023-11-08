@@ -1,11 +1,17 @@
 //Это компонент продукт, полсе создания его необходимо импортировать в app.module, и мы сможем использовать селектор как тег
 
 //Импорты
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { IProduct } from "src/app/models/product";
 //Декоратором обозначаем селектор и  шаблон, это обязательные поля
 @Component({
   selector: 'app-product',// теперь селектор можно использовать как тег в шаблоне основного компонента app.component.html
   templateUrl: './product.component.html'// и содержимое шаблона будет в этом теге
 })
 //создание и экспорт класса
-export class ProductComponent {}
+//мы хотим чтобы этот компонент получал параметры, и уже на основе этих параметров будет создаваться компонет
+//для этого используеться декоратор @Input
+//обознаем в какое свойство положить полученные данные, тип данных
+export class ProductComponent {
+  @Input() product: IProduct
+}

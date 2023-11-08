@@ -10,6 +10,8 @@
 
 //Импорты
 import { Component } from '@angular/core';//Декоратор @Component позволяет идентифицировать класс как компонент.
+import { IProduct } from './models/product';
+import { products as data } from './data/proructs';
 //используем декоратор
 @Component({
   selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
@@ -20,5 +22,5 @@ import { Component } from '@angular/core';//Декоратор @Component поз
 export class AppComponent {
   // в рамках этого класса обьявляем с чем можем работать и используем это в шаблоне
   title = 'angular-fakeapi-shop';//мы обьявили это поле в классе, и теперь можем использовать в шаблоне
-  
+  products: IProduct[] = data//создали поле, обозначили тип данных, присвоили значение
 }
