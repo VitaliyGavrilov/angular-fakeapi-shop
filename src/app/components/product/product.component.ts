@@ -14,4 +14,6 @@ import { IProduct } from "src/app/models/product";
 //обознаем в какое свойство положить полученные данные, тип данных
 export class ProductComponent {
   @Input() product: IProduct
+
+  details: boolean = false // переменная-состояние для кнопки,чтоб переключать состояния
 }
