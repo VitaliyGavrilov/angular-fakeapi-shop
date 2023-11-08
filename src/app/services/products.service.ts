@@ -3,7 +3,7 @@
 //импорт декоратора с работы с сервером
 import { Injectable } from "@angular/core";
 //пакет для запросов
-import { HttpClient } from "@angular/common/http"
+import { HttpClient, HttpParams } from "@angular/common/http"
 import { Observable } from "rxjs";
 import { IProduct } from "../models/product";
 
@@ -20,7 +20,7 @@ export class ProductService {
   }
   //создаем метод класа-сервиса который будет делать запрос на сервис и получать данные
   getAll(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>('https://fakestoreapi.com/products')
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',5)})
     // данная запись возвращает не данные а стрим, для понимая надо изучить rxjs
 
   }
