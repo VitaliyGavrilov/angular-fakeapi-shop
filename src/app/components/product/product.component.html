@@ -1,5 +1,11 @@
 <!-- все содержимое этого шаблона будет доступно по тегу <app-product></app-product>,но только в том компоненте в котором указали данный компонент как declarations в @NgModule -->
-<h2>Product</h2>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores et tempora ratione nulla vero, neque repudiandae libero doloremque? Nam culpa maxime porro exercitationem nihil molestias ex soluta aperiam, ducimus tempore.</p>
-
+<!-- Важно помнить что интерполяция работает тольуо если передавать данные не как паметр к тегу, если это паметр(свойство) тега, как alt  у img, то надо свойство обозначть [], а значение '' -->
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2">
+  <h2 class="mb-2 text-md text-center">{{ product.title }}</h2>
+  <p>Price: <span class="font-bold">{{ product.price | currency: "Шекелей " }}</span></p>
+  <!-- опять пайпы, если оставить currency без обозначения типа то будет автоматическое значение, а если казывать тип, то такое значение и будет -->
+  <p>{{product.description}}</p>
+  <p>{{product.rating.rate}}</p>
+</div>
 
