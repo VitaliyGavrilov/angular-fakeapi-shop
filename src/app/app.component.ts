@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+// Основной компонет приложения
+
+//Базования структура Angular такая:
+// Все сущности это классы
+// В папке app собирается приложение
+//-стили и шаблон описанны в отдельных файлах
+//-в module настраиваем функционал
+//-а в component собираем приложение из блоков и компонентов
+// Файл main.ts запускает приложение
+
+//Импорты
+import { Component } from '@angular/core';//Декоратор @Component позволяет идентифицировать класс как компонент.
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
+  templateUrl: './app.component.html', // шаблон
+  styleUrls: ['./app.component.css']// стили
 })
 export class AppComponent {
-  title = 'angular-fakeapi-shop';
+  title = 'angular-fakeapi-shop';//мы обьявили это поле в классе, и теперь можем использовать в шаблоне
 }
