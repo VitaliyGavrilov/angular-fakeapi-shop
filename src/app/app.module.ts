@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';//основнйо компоне
 import { ProductComponent } from './components/product/product.component';
 //декоратор настраивает приложение, навешивает функционал
 @NgModule({
+  // создаем компоненты и импортируем их сюда, это позволит нам использвать их в виде тега в шаблоне, тег определяеться названием селектора
   declarations: [ //компоненты
     AppComponent,
     ProductComponent
