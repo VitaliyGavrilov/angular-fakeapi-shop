@@ -14,6 +14,7 @@ import { GlobakErrorComponent } from './components/globak-error/globak-error.com
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { ModalComponent } from './components/modal/modal.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { FocusDirective } from './directives/focus.directive';
 
 
 //декоратор настраивает приложение, навешивает функционал
@@ -26,6 +27,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
     FilterProductsPipe,
     ModalComponent,
     CreateProductComponent,
+    FocusDirective,
   ],
   imports: [ //дополнительные модули
     BrowserModule,
