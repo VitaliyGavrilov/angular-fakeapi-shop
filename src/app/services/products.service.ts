@@ -4,7 +4,7 @@
 import { Injectable } from "@angular/core";
 //пакет для запросов
 import { HttpClient, HttpParams, HttpErrorResponse } from "@angular/common/http"
-import { Observable, catchError, delay, retry, throwError } from "rxjs";
+import { Observable, catchError, delay, retry, throwError, tap } from "rxjs";
 import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
 
@@ -19,16 +19,22 @@ export class ProductService {
     //мы сказали что в поле http надо положить HttpClient
     //так же надо зарегистировать пакет(модуль) в app.module
   }
+  products: IProduct[]=[]
   //создаем метод класа-сервиса который будет делать запрос на сервис и получать данные
   getAll(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',15)})
       .pipe(
         delay(2000),
         retry(2),//это для повторного запроса вслучае ошибки
+        tap(products => this.products = products),
         catchError(this.errorHandler.bind(this))
       )
     // данная запись возвращает не данные а стрим, для понимая надо изучить rxjs, в парамс мы передаем настройки, в данном случае ограничиваем количесво получаеммых данных и замедляем скорость
 
+  }
+
+  create(product:IProduct):Observable<IProduct> {
+    return this.http.post<IProduct>('https://fakestoreapi.com/products', product).pipe(tap(prod => this.products.push(prod)))
   }
   //создаем приватный метод сервиса для обработки ошибок
   private errorHandler (error: HttpErrorResponse) {

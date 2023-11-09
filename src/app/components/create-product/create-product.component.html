@@ -3,7 +3,8 @@
   type="text"
   class="border w-full py-2 px-4 mb-2"
   placeholder="Название продукта"
-  formControlName="title">
+  formControlName="title"
+  appFocus>
 
   <p class="text-red-600 form-medium mb2 mb-2" *ngIf="title.errors?.minlength && title.touched">минимальное количесвто символом 6</p>
 

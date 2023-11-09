@@ -1,6 +1,6 @@
 //Создали интерфейс(тип данных) для проуктов
 export interface IProduct {
-  id: number
+  id?: number
   title: string
   price: number
   description: string
