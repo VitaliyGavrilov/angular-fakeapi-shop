@@ -24,7 +24,7 @@ export class ProductService {
     return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',5)})
       .pipe(
         delay(2000),
-        catchError(this.errorHandler)
+        catchError(this.errorHandler.bind(this))
       )
     // данная запись возвращает не данные а стрим, для понимая надо изучить rxjs, в парамс мы передаем настройки, в данном случае ограничиваем количесво получаеммых данных и замедляем скорость
 

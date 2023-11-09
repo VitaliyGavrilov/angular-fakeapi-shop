@@ -9,12 +9,14 @@ import { HttpClientModule } from "@angular/common/http"
 //компоненты
 import { AppComponent } from './app.component';//основнйо компонент приложения
 import { ProductComponent } from './components/product/product.component';
+import { GlobakErrorComponent } from './components/globak-error/globak-error.component';
 //декоратор настраивает приложение, навешивает функционал
 @NgModule({
   // создаем компоненты и импортируем их сюда, это позволит нам использвать их в виде тега в шаблоне, тег определяеться названием селектора
   declarations: [ //компоненты
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    GlobakErrorComponent
   ],
   imports: [ //дополнительные модули
     BrowserModule,

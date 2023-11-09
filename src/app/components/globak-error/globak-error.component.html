@@ -1,0 +1,7 @@
+<div *ngIf="errorService.error$ | async as error" class="h-[50px] flex justify-center items-center bg-red-600 text-white relative">
+  {{error}}
+  <button class="absolute top-2 right-5 text-white" (click)="errorService.clear()">&times;</button>
+</div>
+<!-- Что мы сделали? Суть в том , что: если в ерор сервисе есть стрим ерор, который мы пропускаем через асинк и помещаем в ерор, если он есть то и блок будет   -->
+
+
