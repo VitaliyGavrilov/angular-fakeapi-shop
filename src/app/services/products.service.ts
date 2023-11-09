@@ -4,7 +4,7 @@
 import { Injectable } from "@angular/core";
 //пакет для запросов
 import { HttpClient, HttpParams, HttpErrorResponse } from "@angular/common/http"
-import { Observable, catchError, delay, throwError } from "rxjs";
+import { Observable, catchError, delay, retry, throwError } from "rxjs";
 import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
 
@@ -24,6 +24,7 @@ export class ProductService {
     return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',5)})
       .pipe(
         delay(2000),
+        retry(2),//это для повторного запроса вслучае ошибки
         catchError(this.errorHandler.bind(this))
       )
     // данная запись возвращает не данные а стрим, для понимая надо изучить rxjs, в парамс мы передаем настройки, в данном случае ограничиваем количесво получаеммых данных и замедляем скорость
