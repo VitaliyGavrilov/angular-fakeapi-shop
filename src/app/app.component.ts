@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';//Декоратор @Componen
 import { IProduct } from './models/product';
 import { products as data } from './data/proructs';
 import { ProductService } from './services/products.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';//Observable - это название механизма, который используется в Angular для программирования асинхронных потоков данных в декларативном стиле. Observable является синонимом термина stream . К асинхронным потокам данных обычно относятся такие концепции, как события, http запросы и триггеры в коде.
 //используем декоратор
 @Component({
   selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
