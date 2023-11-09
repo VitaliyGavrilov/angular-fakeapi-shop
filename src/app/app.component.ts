@@ -19,6 +19,7 @@ import { Observable, tap } from 'rxjs';//Observable - это название м
   selector: 'app-root', //селектор, название компонента для шаблона(html тег), в index.html его рендерим
   templateUrl: './app.component.html', // шаблон
   styleUrls: ['./app.component.css']// стили
+
 })
 //создание и экспорт класса
 export class AppComponent implements OnInit {
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
   title = 'angular-fakeapi-shop';//мы обьявили это поле в классе, и теперь можем использовать в шаблоне
   loading = false //реализуем индикатор загруззки, для этого создаем поле-состояние, в таких случаях не обязательно указывать тип
   products$: Observable<IProduct[]>//$-обозначает что это стрим
-
+  term = ' '
   //создаем конструктор, в приватное поле prouctsService положим класс-сервис ProductService
   constructor(private prouctsService: ProductService) {
   }

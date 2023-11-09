@@ -21,7 +21,7 @@ export class ProductService {
   }
   //создаем метод класа-сервиса который будет делать запрос на сервис и получать данные
   getAll(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',5)})
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {params: new HttpParams().append('limit',15)})
       .pipe(
         delay(2000),
         retry(2),//это для повторного запроса вслучае ошибки

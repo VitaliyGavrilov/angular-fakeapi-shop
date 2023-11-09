@@ -1,9 +1,18 @@
 <app-globak-error></app-globak-error>
 
 <div class="max-w-2xl container mx-auto pt-5">
+
   <h1 class="font-bold mb-2 text-center text-lg">{{ title | titlecase }}</h1>
   <!-- {{ данные }} - это интерполяция, позволяет нам использовать данные обьявленные в классе, если их можно привести к строке -->
   <!-- | -это пайпы, позволяет нам менять отображение данных -->
+
+  <!-- для фильтрации создадим класс-пайп -->
+  <input
+    type="text"
+    class="mb-2 border py-2 px-4 w-full"
+    placeholder="Фильтр продуктов"
+    [(ngModel)] = "term"
+  >
 
   <!-- если лоадинг тру то будем видеть индикатор загрузки -->
   <p *ngIf="loading" class="text-center text-lg">Загрузка...</p>
@@ -19,10 +28,16 @@
   <!-- если понадобиться индекс, он создается таким образом, это не обязательно -->
   <!-- интерируемый элемент это параметр, мы должны передать его в компонент  -->
   <!-- обращаемся к стриму и пропускаем его через пайп async, он автоматически подпишется на стрим и выведет данные -->
-  <app-product
-    *ngFor="let product of products$ | async; let i = index"
-    [product]="product">
-  </app-product>
+  <!-- ФИЛЬТРАЦИЯ -->
+  <!-- для фильтрации нужно немного изменить конструкцию -->
+  <!-- Мы создали класс-пайп filterProducts, перелаем в него массив данных и запрос -->
+  <div *ngIf="products$ | async as products">
+    <app-product
+      *ngFor="let product of products | filterProducts: term; let i = index"
+      [product]="product">
+    </app-product>
+  </div>
+
 
 </div>
 
